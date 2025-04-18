@@ -1,0 +1,8 @@
+<div class="detail-page">
+  <% if (title) { %>
+  <div class="titleCart">
+    <h1><%= title %></h1>
+    <%- cart %>
+  </div>
+  <% } else { res.redirect('/') } %> <%- display %>
+</div>

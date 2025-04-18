@@ -1,0 +1,11 @@
+<div class="error">
+  <div class="error-msg">
+    <% if (title) { %>
+      <h1>
+        <%= title %>
+      </h1>
+      <% } else { res.redirect('/') } %>
+        <p><%- message %></p>
+  </div>
+  <img src="/images/error/error.webp" alt="" />
+</div>

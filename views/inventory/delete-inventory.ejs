@@ -1,0 +1,36 @@
+<% if (title) { %>
+  <h1>
+    <%= title %>
+  </h1>
+  <%- messages() %>
+    <% } else { res.redirect('/') } %>
+
+      <% if (errors) { %>
+        <ul class="notice">
+          <% errors.array().forEach(error=> { %>
+            <% if (error.msg !="Invalid value" ) {%>
+              <li>
+                <%= error.msg %>
+              </li>
+              <% } %>
+                <% }) %>
+        </ul>
+        <% } %>
+          <div class="form">
+            <form action="/inv/" method="post">
+              <label for="inv_male">Make</label>
+              <input type="text" id="inv_make" value="<%= locals.invDetails.inv_make %>" name="inv_make" readonly>
+
+              <label for="inv_model">Model</label>
+              <input type="text" id="inv_model" value="<%= locals.invDetails.inv_model %>" name="inv_model" readonly>
+
+              <label for="inv_male">Price</label>
+              <input type="text" id="inv_price" value="<%= locals.invDetails.inv_price %>" name="inv_price" readonly>
+
+              <label for="inv_year">Year</label>
+              <input type="text" id="inv_year" value="<%= locals.invDetails.inv_year %>" name="inv_year" readonly>
+              <input type="hidden" name="inv_id" value="<%= locals.invDetails.inv_id %>">
+
+              <input type="submit" id="submit" value="Delete">
+            </form>
+          </div>

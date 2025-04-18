@@ -1,0 +1,10 @@
+<% if (title) { %>
+  <h1>
+    <%= title %>
+  </h1>
+  <% } else { res.redirect('/') } %>
+<div class="noOrder">
+  <h3>There are no Placed orders!</h3>
+  <p>Return Home <span><a href="/">Home</a></span></p>
+  <p>Account Management <span><a href="/account">Account</a></span></p>
+</div>

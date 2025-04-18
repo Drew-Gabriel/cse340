@@ -1,0 +1,15 @@
+<% if (title) { %>
+  <h1>
+    <%= title %>
+  </h1> 
+  <% } else { res.redirect('/') } %>
+    <div class="cartMain">
+      <%- cartView %>
+        <div class="checkout">
+          <h3>Total</h3>
+          <p>Total: <span class="total"></span></p>
+          <a href="/inv/placeorder/" id="orderLink">Place Order</a>
+        </div>
+    </div>
+   <script src="/js/cart.js"></script>
+   <script src="/js/addToCart.js"></script>
