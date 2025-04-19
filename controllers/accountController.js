@@ -37,6 +37,7 @@ async function registerAccount(req, res) {
   let nav = await utilities.getNav()
   const { account_firstname, account_lastname, account_email, account_password } = req.body
 
+
   let hashedPassword
   try {
     // regular password and cost (salt is generated automatically)
@@ -82,8 +83,10 @@ async function registerAccount(req, res) {
 async function accountLogin(req, res) {
   let nav = await utilities.getNav()
   const { account_email, account_password } = req.body
+  console.log(account_email, account_password)
   const accountData = await accountModel.getAccountByEmail(account_email)
   if (!accountData) {
+    console.log("Did we get here?")
     req.flash("notice", "Please check your credentials and try again.")
     res.status(400).render("account/login", {
       title: "Login",
@@ -93,8 +96,10 @@ async function accountLogin(req, res) {
     })
     return
   }
+  console.log("How about here?")
   try {
     if (await bcrypt.compare(account_password, accountData.account_password)) {
+      console.log("Inside try catch")
       delete accountData.account_password
       const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 })
       if (process.env.NODE_ENV === 'development') {
